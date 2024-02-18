@@ -22,12 +22,12 @@ import FormControlCheckbox from "./common/FormControlCheckbox.jsx";
 const TodoForm = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [success, setSuccess] = useState(null)
-    const [error, setError] = useState(null); // Add error state
+    const [error, setError] = useState(null);
 
     const [formData, setFormData] = useState({
         body: '',
         dateOfTodo: null,
-        completed: null
+        completed: false
     });
 
     const handleChange = (name, value) => {
@@ -35,22 +35,25 @@ const TodoForm = () => {
     }
 
     const handleSubmit = async (event) => {
-        setIsLoading(true);
         event.preventDefault();
+        setIsLoading(true);
+
         try {
-            setFormData({ body: '', dateOfTodo: null });
             const response = await postTodo(formData);
+
             if (response.status === 201) {
-                setSuccess('ToDo Created Successfully')
+                setSuccess('ToDo Created Successfully');
+                setFormData({ body: '', dateOfTodo: null, completed: false });
             } else {
-                setError('There was an error while creating the task')
+                const errorData = response.data;
+                setError(errorData.message || 'There was an error while creating the task');
             }
-            setIsLoading(false);
         } catch (error) {
-            setError(error.message);
-            setIsLoading(false)
+            setError(error.message || 'An unexpected error occurred');
+        } finally {
+            setIsLoading(false);
         }
-    }
+    };
 
     return (
         <React.Fragment>
@@ -76,7 +79,7 @@ const TodoForm = () => {
                                 <FormControlCheckbox
                                     label='Completed' ariaLabel='completed-task' color="secondary"
                                     onChange={(e) => handleChange('completed', e.target.checked)}
-                                    checked={formData.completed}
+                                    checked={formData.completed} value={formData.completed}
                                 />
 
                                 <LocalizationProvider dateAdapter={AdapterDayjs}>
