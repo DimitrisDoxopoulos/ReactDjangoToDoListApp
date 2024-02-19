@@ -19,3 +19,11 @@ export const postTodo = async (toDo) => {
         throw error;
     }
 }
+
+export const deleteTodo = async (id) => {
+    try {
+        return await axios.delete(`${API_BASE_URL}/notes/${id}/`)
+    } catch (error) {
+        console.log("Error on deleting: ", error)
+    }
+}

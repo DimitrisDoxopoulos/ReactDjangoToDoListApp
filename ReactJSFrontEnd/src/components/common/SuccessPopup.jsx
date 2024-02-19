@@ -21,32 +21,34 @@ const SuccessPopup = ({ message, open, onClose }) => {
     };
 
     return (
-        <Snackbar
-            anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'center',
-            }}
-            open={open}
-            autoHideDuration={AutoHideDuration}
-            onClose={handleClick}
-        >
-            <SnackbarContent
-                style={{
-                    backgroundColor: '#4caf50',
+        <React.Fragment>
+            <Snackbar
+                anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'center',
                 }}
-                message={
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                        <CheckCircleOutline style={{ marginRight: '8px', color: 'white' }} />
-                        {message}
-                    </div>
-                }
-                action={
-                    <IconButton size="small" aria-label="close" color="inherit" onClick={onClose}>
-                        <CloseIcon fontSize="small" />
-                    </IconButton>
-                }
-            />
-        </Snackbar>
+                open={open}
+                autoHideDuration={AutoHideDuration}
+                onClose={handleClick}
+            >
+                <SnackbarContent
+                    style={{
+                        backgroundColor: '#4caf50',
+                    }}
+                    message={
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                            <CheckCircleOutline style={{ marginRight: '8px', color: 'white' }} />
+                            {message}
+                        </div>
+                    }
+                    action={
+                        <IconButton size="small" aria-label="close" color="inherit" onClick={onClose}>
+                            <CloseIcon fontSize="small" />
+                        </IconButton>
+                    }
+                />
+            </Snackbar>
+        </React.Fragment>
     );
 };
 

@@ -4,39 +4,89 @@ import Table from "@mui/material/Table";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from "@mui/icons-material/Delete";
 import LinearLoader from "./common/LinearLoader.jsx";
-import { fetchToDos } from "../services/TodoService.js";
+import {fetchToDos, deleteTodo} from "../services/TodoService.js";
 import { formatDate } from "../helpers/HelperFunctions.js";
 import ErrorPopup from "./common/ErrorPopup.jsx";
+import SuccessPopup from "./common/SuccessPopup.jsx";
+import ConfirmationDialogue from "./common/ConfirmationDialogue.jsx";
 
 const TableComponent = () => {
     const headers = ['To Do', 'Status', 'Todo Date', 'Data Created', 'Date Updated', 'Actions'];
     const [todos, setTodos] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null); // Add error state
+    const [success, setSuccess] = useState(null);
+    const [error, setError] = useState(null);
+    const [dialogueOpen, setDialogueOpen] = useState(false);
+    const [todoId, setTodoId] = useState(null)
+
+    const fetchData = async () => {
+        try {
+            const response = await fetchToDos();
+            setTodos(response.data);
+            setIsLoading(false);
+        } catch (error) {
+            setIsLoading(false);
+            setError(error.message); // Set error message in case of failure
+        }
+    };
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetchToDos();
-                setTodos(response.data);
-                setIsLoading(false);
-            } catch (error) {
-                setIsLoading(false);
-                setError(error.message); // Set error message in case of failure
-            }
-        };
-
         fetchData();
     }, []);
 
+    const handleDelete = async (id) => {
+        setTodoId(id)
+        setDialogueOpen(true);
+    }
+
+    const onDelete = async (id) => {
+        try {
+            setIsLoading(true);
+            const response = await deleteTodo(id);
+            if (response.status === 204) {
+                setSuccess("The ToDo was successfully deleted")
+                await fetchData()
+            } else {
+                const errorData = response.data;
+                setError(errorData.message || 'There was an error while creating the task');
+            }
+        } catch (error) {
+            setIsLoading(false);
+            setError(error.message || 'An unexpected error occurred');
+        } finally {
+            setTodoId(null)
+            setIsLoading(false);
+        }
+    }
+    const confirmDelete = () => {
+        onDelete(todoId);
+        setTodoId(null)
+        setDialogueOpen(false);
+    };
+
+    const cancelDelete = () => {
+        setTodoId(null)
+        setDialogueOpen(false);
+    };
+
     return (
         <React.Fragment>
+            {success && !isLoading && <SuccessPopup message={success} open={true} onClose={() => setSuccess(null)} />}
+            {error && !isLoading && <ErrorPopup message={error} open={true} onClose={() => setError(null)} />}
+
             {isLoading ? (
                 <LinearLoader />
             ) : error ? (
                 <ErrorPopup message={error} open={true} onClose={() => setError(null)} />
             ) : (
                 <div className="py-32">
+                    <ConfirmationDialogue
+                        open={dialogueOpen}
+                        title="Delete Confirmation"
+                        message="Are you sure you want to delete this ToDo?"
+                        onConfirm={confirmDelete}
+                        onClose={cancelDelete}
+                    />
                     <TableContainer component={Paper}>
                         <Table sx={{ minWidth: 850 }} aria-label="todos-table">
                             <TableHead>
@@ -68,7 +118,7 @@ const TableComponent = () => {
                                         <TableCell>{formatDate(item.updated)}</TableCell>
                                         <TableCell className="p-3 text-sm font-medium grid grid-flow-col items-center mt-5">
                                             <span className="text-xl cursor-pointer px-2"><EditIcon /></span>
-                                            <span className="text-xl cursor-pointer px-2"><DeleteIcon /></span>
+                                            <span className="text-xl cursor-pointer px-2"><DeleteIcon onClick={() => handleDelete(item.id)}/></span>
                                         </TableCell>
                                     </TableRow>
                                 ))}

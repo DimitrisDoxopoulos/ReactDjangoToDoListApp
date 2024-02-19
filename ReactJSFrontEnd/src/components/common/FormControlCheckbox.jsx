@@ -1,17 +1,20 @@
+import React from "react";
 import { Checkbox, FormControlLabel } from '@mui/material';
 import * as PropTypes from 'prop-types';
 
 const MyCheckbox = ({ label, checked, value, onChange, color, ariaLabel }) => {
     return (
-        <FormControlLabel
-            control={
-                <Checkbox
-                    checked={checked} onChange={onChange} color={color}
-                    inputProps={{ "aria-label": ariaLabel }} value={value}
-                />
-            }
-            label={label}
-        />
+        <React.Fragment>
+            <FormControlLabel
+                control={
+                    <Checkbox
+                        checked={checked} onChange={onChange} color={color}
+                        inputProps={{ "aria-label": ariaLabel }} value={value}
+                    />
+                }
+                label={label}
+            />
+        </React.Fragment>
     );
 };
 

@@ -59,7 +59,9 @@ const TodoForm = () => {
         <React.Fragment>
             {success && !isLoading && <SuccessPopup message={success} open={true} onClose={() => setSuccess(null)} />}
             {error && !isLoading && <ErrorPopup message={error} open={true} onClose={() => setError(null)} />}
-            {isLoading ? (<LinearLoader />) : (
+            {isLoading ? (
+                <LinearLoader />
+            ) : (
                 <Card>
                     <CardHeader
                         avatar={<Avatar sx={{ bgcolor: blue[500] }} aria-label="Create a ToDo task"></Avatar>}
