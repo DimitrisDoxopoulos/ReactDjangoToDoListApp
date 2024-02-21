@@ -24,6 +24,16 @@ export const deleteTodo = async (id) => {
     try {
         return await axios.delete(`${API_BASE_URL}/notes/${id}/`)
     } catch (error) {
-        console.log("Error on deleting: ", error)
+        console.log("Error on deleting: ", error);
+        throw error;
+    }
+}
+
+export const updateTodo = async (id, value) => {
+    try {
+        return await axios.patch(`${API_BASE_URL}/notes/${id}/`, value)
+    } catch (error) {
+        console.log("Error on deleting: ", error);
+        throw error;
     }
 }

@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from "prop-types";
 import {Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 const ConfirmationDialogue = ({ open, onClose, onConfirm, message, title }) => {
     return (
@@ -10,8 +12,8 @@ const ConfirmationDialogue = ({ open, onClose, onConfirm, message, title }) => {
                 <DialogContentText>{message}</DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button style={{ textTransform: 'none' }} variant="outlined" onClick={onClose} color="secondary">Cancel</Button>
-                <Button style={{ textTransform: 'none' }} variant="outlined" onClick={onConfirm} color="secondary">Delete</Button>
+                <Button style={{ textTransform: 'none' }} variant="outlined" onClick={onClose} color="secondary"><CloseIcon /> Cancel</Button>
+                <Button style={{ textTransform: 'none' }} variant="outlined" onClick={onConfirm} color="secondary"><DeleteOutlineIcon /> Delete</Button>
             </DialogActions>
         </Dialog>
     );
