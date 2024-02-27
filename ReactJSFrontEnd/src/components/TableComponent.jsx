@@ -50,6 +50,7 @@ const TableComponent = () => {
     const onHandleUpdateClose = () => {
         setToDoToUpdate(null);
         setUpdateDialogOpen(false);
+        fetchData()
     }
 
     const onDelete = async (id) => {
@@ -67,7 +68,6 @@ const TableComponent = () => {
             setIsLoading(false);
             setError(error.message || 'An unexpected error occurred');
         } finally {
-            setTodoId(null)
             setIsLoading(false);
         }
     }
@@ -129,6 +129,8 @@ const TableComponent = () => {
                         setSuccess={setSuccess}
                         setToDoToUpdate={setToDoToUpdate}
                         toDoToUpdate={toDoToUpdate}
+                        setUpdateDialogOpen={setUpdateDialogOpen}
+                        fetchData={fetchData}
                     />}
 
                     <TableContainer component={Paper}>

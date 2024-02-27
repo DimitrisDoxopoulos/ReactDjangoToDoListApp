@@ -14,9 +14,9 @@ import { DesktopDateTimePicker, LocalizationProvider, renderTimeViewClock } from
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import FormControlCheckbox from './common/FormControlCheckbox.jsx';
 import { updateTodo } from '../services/TodoService.js';
-import moment from "moment";
+import dayjs from "dayjs";
 
-const UpdateTodoModal = ({ open = false, onClose, setIsLoading, setSuccess, setError, toDoToUpdate, setToDoToUpdate }) => {
+const UpdateTodoModal = ({ open, setIsLoading, setSuccess, setError, toDoToUpdate, setToDoToUpdate, setUpdateDialogOpen, fetchData }) => {
     const [formData, setFormData] = useState({
         body: '',
         dateOfTodo: null,
@@ -27,7 +27,7 @@ const UpdateTodoModal = ({ open = false, onClose, setIsLoading, setSuccess, setE
         if (toDoToUpdate) {
             setFormData({
                 body: toDoToUpdate.body || '',
-                dateOfTodo: moment(toDoToUpdate.dateOfTodo) || null,
+                dateOfTodo: dayjs(toDoToUpdate.dateOfTodo) || null,
                 completed: toDoToUpdate.completed || false
             });
         }
@@ -36,6 +36,14 @@ const UpdateTodoModal = ({ open = false, onClose, setIsLoading, setSuccess, setE
     const handleChange = (name, value) => {
         setFormData({ ...formData, [name]: value });
     };
+
+    const onClose = () => {
+        setToDoToUpdate(null);
+        setToDoToUpdate(null);
+        setIsLoading(false);
+        setUpdateDialogOpen(false);
+        fetchData()
+    }
 
     const handleUpdate = async (event) => {
         event.preventDefault();
@@ -51,11 +59,10 @@ const UpdateTodoModal = ({ open = false, onClose, setIsLoading, setSuccess, setE
                 const errorData = response.data;
                 setError(errorData.message || 'There was an error while updating the todo');
             }
+            onClose();
         } catch (error) {
             setError(error.message || 'An unexpected error occurred');
-        } finally {
             setIsLoading(false);
-            setToDoToUpdate(null);
         }
     };
 
@@ -83,6 +90,7 @@ const UpdateTodoModal = ({ open = false, onClose, setIsLoading, setSuccess, setE
                                 label="Date and Time"
                                 value={formData.dateOfTodo}
                                 onChange={(newValue) => handleChange('dateOfTodo', newValue)}
+                                renderInput={(props) => <TextField {...props} />}
                                 required
                                 viewRenderers={{
                                     hours: renderTimeViewClock,
@@ -129,7 +137,9 @@ UpdateTodoModal.propTypes = {
     setSuccess: PropTypes.func.isRequired,
     setError: PropTypes.func.isRequired,
     toDoToUpdate: PropTypes.object,
-    setToDoToUpdate: PropTypes.func.isRequired
+    setToDoToUpdate: PropTypes.func.isRequired,
+    fetchData: PropTypes.func.isRequired,
+    setUpdateDialogOpen: PropTypes.func.isRequired
 };
 
 export default UpdateTodoModal;
