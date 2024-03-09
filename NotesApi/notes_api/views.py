@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets
+
 from notes_api import models, serializers
 
 

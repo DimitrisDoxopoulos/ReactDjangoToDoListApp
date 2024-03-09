@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8521ecb8-21df-41b3-b516-92055746a60a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/notes_api/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notes_api/managers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NotesApi/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/NotesApi/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NotesApi/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/NotesApi/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes_api/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes_api/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes_api/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes_api/migrations/0002_todo_dateoftodo.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes_api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes_api/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes_api/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes_api/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes_api/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/notes_api/views.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="2dS3RKX8G0f2hrZTSAWuj2UCxTX" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/Dimitris/Documents/Coding/Projects/WebDev/NotesAppReactDjango/NotesApi/notes_api",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Dimitris\Documents\Coding\Projects\WebDev\NotesAppReactDjango\NotesApi\notes_api" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="NotesApi" type="Python.DjangoServer" factoryName="Django server">
+      <module name="NotesApi" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="NotesApi.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8521ecb8-21df-41b3-b516-92055746a60a" name="Changes" comment="" />
+      <created>1709987644119</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1709987644119</updated>
+      <workItem from="1709987660076" duration="1040000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
